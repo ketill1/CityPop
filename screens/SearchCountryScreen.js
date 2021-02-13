@@ -13,6 +13,8 @@ function SearchCountryScreen({ navigation }) {
   const [searchQuery, setSearchQuery] = React.useState('');
   const onChangeSearch = query => setSearchQuery(query);
 
+  
+
   return (
     //show header, text and searchbar
     <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss(); }} >

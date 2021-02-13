@@ -36,7 +36,16 @@ function ShowCityPopulationScreen({ route, navigation }) {
       .finally(() => setLoading(false));
   }, []);
 
-  //show header, text, poulation container
+  //check for empty list from user input
+  const emptyComponent = () => {
+    return (
+      <View style={styles.item}>
+        <Text style={styles.title}>Can't find city!</Text>
+      </View>
+    );
+  };
+
+  //show: header, city, poulation container, loading and error
   return (
     <SafeAreaView style={styles.container}>
       <View style={{alignItems: 'center'}}>
@@ -52,6 +61,7 @@ function ShowCityPopulationScreen({ route, navigation }) {
           </View>
           }
           data={data}
+          ListEmptyComponent={emptyComponent}
           renderItem={({ item }) => (
             <View style={styles.item}>
               <Text style={styles.title}>{item.population}</Text>
@@ -59,7 +69,6 @@ function ShowCityPopulationScreen({ route, navigation }) {
           )}
           keyExtractor={(item, index) => index.toString()}
         />
-
     </SafeAreaView>
   );
 }

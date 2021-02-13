@@ -39,34 +39,43 @@ function ShowCountryScreen({ route, navigation }) {
       .finally(() => setLoading(false));
   }, []);
 
+  //check for empty list from user input
+  const emptyComponent = () => {
+    return (
+      <View style={styles.item}>
+        <Text style={styles.title}>Can't find country!</Text>
+      </View>
+    );
+  };
 
-
+  //show: header, countries loading and error
   return (
     <SafeAreaView style={styles.container}>
     <View style={{alignItems: 'center'} }>
-      <View style={styles.space2} />
-          <Text h2 >{itemId}</Text>
-      <View style={styles.space2} />
-      </View>
-      <ActivityIndicator size='large' animating={isLoading}/>
-      <FlatList
-      data={data}
+    <View style={styles.space2} />
+      <Text h2 >{itemId}</Text>
+    <View style={styles.space2} />
+    </View>
+    <ActivityIndicator size='large' animating={isLoading}/>
+    <FlatList
       renderItem={({ item, index }) => (
         <TouchableHighlight
-          activeOpacity={0.6}
-          underlayColor="#DDDDDD"
-          onPress={() => navigation.push('ShowPopulation', {itemId: item.toponymName})}
-          >
-          <View style={styles.item}>
+        activeOpacity={0.6}
+        underlayColor="#DDDDDD"
+        onPress={() => navigation.push('ShowPopulation', {itemId: item.toponymName})}
+        >
+        <View style={styles.item}>
           <Text style={styles.title}>{item.toponymName}</Text>
-          </View>
+        </View>
         </TouchableHighlight>
       )}
+      data={data}
+      ListEmptyComponent={emptyComponent}
       keyExtractor={(item, index) => index.toString()}
-      />
+    />
     </SafeAreaView>
-  );
-}
+    );
+  }
 //styles for render text and list
 const styles = StyleSheet.create({
   container: {
