@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-ActivityIndicator,
 StyleSheet,
 View,
 FlatList,
@@ -12,7 +11,8 @@ TouchableHighlight
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { ListItem, Icon, Text } from 'react-native-elements'
+import { ListItem, Icon, Text } from 'react-native-elements';
+import { ActivityIndicator, Colors } from 'react-native-paper';
 
 //takes user input from route and navigate data from navigation
 function ShowCountryScreen({ route, navigation }) {
@@ -48,7 +48,7 @@ function ShowCountryScreen({ route, navigation }) {
           <Text h2 >{itemId}</Text>
       <View style={styles.space2} />
       </View>
-       {isLoading ? <ActivityIndicator/> : (
+      <ActivityIndicator size='large' animating={isLoading}/>
       <FlatList
       data={data}
       renderItem={({ item, index }) => (
@@ -64,7 +64,6 @@ function ShowCountryScreen({ route, navigation }) {
       )}
       keyExtractor={(item, index) => index.toString()}
       />
-    )}
     </SafeAreaView>
   );
 }
