@@ -14,21 +14,23 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { ListItem, Icon, Text } from 'react-native-elements'
 
-
+//takes user input from route and navigate data from navigation
 function ShowCountryScreen({ route, navigation }) {
 
-
+  //set initial loading value true
   const [isLoading, setLoading] = React.useState(true);
+  //set data to emty
   const [data, setData] = React.useState([]);
+  //set previous user imput
   const { itemId, otherParam } = route.params;
 
-  const Item = ({ name }) => (
-  <View style={styles.item}>
-  </View>
-  );
+  //get api data from specific country to show citis in falling order
+  //uses: citie5000, fuzzy, orderBy, maxRows, username
+  const myRequest = new Request(
+    `http://api.geonames.org/searchJSON?q=${
+      itemId}&orderby=population&fuzzy=1&cities=cities5000&maxRows=10&username=weknowit`)
 
-  const myRequest = new Request(`http://api.geonames.org/searchJSON?q=${itemId}&orderby=population&fuzzy=1&cities=cities5000&maxRows=100&username=weknowit`)
-
+  //fetch api and check for error
   React.useEffect(() => {
     fetch(myRequest)
       .then((response) => response.json())
@@ -36,6 +38,7 @@ function ShowCountryScreen({ route, navigation }) {
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   }, []);
+
 
 
   return (
@@ -53,17 +56,19 @@ function ShowCountryScreen({ route, navigation }) {
           activeOpacity={0.6}
           underlayColor="#DDDDDD"
           onPress={() => navigation.push('ShowPopulation', {itemId: item.toponymName})}
-          keyExtractor={({ adminCode1 }, index) => adminCode1}>
+          >
           <View style={styles.item}>
           <Text style={styles.title}>{item.toponymName}</Text>
           </View>
         </TouchableHighlight>
       )}
+      keyExtractor={(item, index) => index.toString()}
       />
     )}
     </SafeAreaView>
   );
 }
+//styles for render text and list
 const styles = StyleSheet.create({
   container: {
     flex: 1,

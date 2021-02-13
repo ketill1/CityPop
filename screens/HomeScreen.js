@@ -1,10 +1,13 @@
+//import react-data
 import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Button, Text } from 'react-native-elements';
 
+//navigation for navigating screens
 function HomeScreen({ navigation }) {
+  //show header, text and button
   return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', }}>
         <Text h2>CityPop</Text>
@@ -14,7 +17,7 @@ function HomeScreen({ navigation }) {
           title="     SEARCH BY CITY    "
           type="outline"
           onPress={() => {
-            /* 1. Navigate to the SearchCity route with params */
+            /* Navigate to the SearchCity route with params */
             navigation.navigate('SearchCity');
           }}
         />
@@ -31,6 +34,7 @@ function HomeScreen({ navigation }) {
       </View>
   );
 }
+//styles for render text and button
 const styles = StyleSheet.create({
   button: {
     marginBottom: 20,
