@@ -11,7 +11,6 @@ import ShowCityPopulationScreen from './screens/ShowCityPopulationScreen';
 import ShowCountryScreen from './screens/ShowCountryScreen';
 
 const Stack = createStackNavigator();
-
 function App() {
   return (
     <NavigationContainer>
