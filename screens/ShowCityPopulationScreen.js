@@ -25,7 +25,8 @@ function ShowCityPopulationScreen({ route, navigation }) {
 
   //get api data from specific city to show population
   //uses: citie5000,isNameRequired, fuzzy, maxRows, username
-  const myRequest = new Request(`http://api.geonames.org/searchJSON?q=${itemId}&fuzzy=1&isNameRequired=true&cities=cities5000&maxRows=1&username=weknowit`)
+  const myRequest = new Request(`http://api.geonames.org/searchJSON?q=${
+    itemId}&fuzzy=1&isNameRequired=true&cities=cities5000&maxRows=1&username=weknowit`)
 
   //fetch api and check for error
   React.useEffect(() => {
@@ -45,7 +46,7 @@ function ShowCityPopulationScreen({ route, navigation }) {
     );
   };
 
-  //show: header, city, poulation container, loading and error
+  //show: header, city, poulation-container, loading and error
   return (
     <SafeAreaView style={styles.container}>
       <View style={{alignItems: 'center'}}>
@@ -53,22 +54,24 @@ function ShowCityPopulationScreen({ route, navigation }) {
         <Text h2 >{itemId}</Text>
       <View style={styles.space2} />
       </View>
-      <ActivityIndicator size='large' animating={isLoading}/>
-        <FlatList
-          ListHeaderComponent={
+      <ActivityIndicator
+        size='large'
+        animating={isLoading}/>
+      <FlatList
+        ListHeaderComponent={
           <View>
             <Text style={styles.title}>POPULATION</Text>
           </View>
-          }
-          data={data}
-          ListEmptyComponent={emptyComponent}
-          renderItem={({ item }) => (
-            <View style={styles.item}>
-              <Text style={styles.title}>{item.population}</Text>
-            </View>
-          )}
-          keyExtractor={(item, index) => index.toString()}
-        />
+        }
+        data={data}
+        ListEmptyComponent={emptyComponent}
+        renderItem={({ item }) => (
+          <View style={styles.item}>
+            <Text style={styles.title}>{item.population}</Text>
+          </View>
+        )}
+        keyExtractor={(item, index) => index.toString()}
+      />
     </SafeAreaView>
   );
 }

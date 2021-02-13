@@ -9,29 +9,30 @@ import { Button, Text } from 'react-native-elements';
 function HomeScreen({ navigation }) {
   //show header, text and button
   return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', }}>
-        <Text h2>CityPop</Text>
-        <View style={styles.space2} />
-        <View>
-        <Button style={styles.button}
-          title="     SEARCH BY CITY    "
-          type="outline"
-          onPress={() => {
-            /* Navigate to the SearchCity route with params */
-            navigation.navigate('SearchCity');
-          }}
-        />
-        <View style={styles.space} />
-        <Button style={styles.button}
-          title="SEARCH BY COUNTRY"
-          type="outline"
-          onPress={() => {
-            /* 1. Navigate to the SearchCountry route with params */
-            navigation.navigate('SearchCountry');
-          }}
-        />
-        </View>
-      </View>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', }}>
+      <Text h2>CityPop</Text>
+    <View style={styles.space2} />
+    <View>
+    <Button
+      style={styles.button}
+      title="     SEARCH BY CITY    "
+      type="outline"
+      onPress={() => {
+      /* Navigate to the SearchCity route with params */
+      navigation.navigate('SearchCity');
+      }}
+    />
+    <View style={styles.space} />
+    <Button style={styles.button}
+      title="SEARCH BY COUNTRY"
+      type="outline"
+      onPress={() => {
+      /* 1. Navigate to the SearchCountry route with params */
+        navigation.navigate('SearchCountry');
+      }}
+    />
+    </View>
+    </View>
   );
 }
 //styles for render text and button

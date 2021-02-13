@@ -5,7 +5,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 //loading screens
 import HomeScreen from './screens/HomeScreen';
-import DetailsScreen from './screens/DetailsScreen';
 import SearchCityScreen from './screens/SearchCityScreen';
 import SearchCountryScreen from './screens/SearchCountryScreen';
 import ShowCityPopulationScreen from './screens/ShowCityPopulationScreen';

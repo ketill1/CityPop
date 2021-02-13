@@ -13,25 +13,24 @@ function SearchCountryScreen({ navigation }) {
   const [searchQuery, setSearchQuery] = React.useState('');
   const onChangeSearch = query => setSearchQuery(query);
 
-  
-
+  //show header, text and searchbar
   return (
-    //show header, text and searchbar
     <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss(); }} >
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text h2 >SEARCH BY {"\n"}COUNTRY</Text>
-      <View style={styles.space2} />
-      <Searchbar
-        placeholder="Enter a country"
-        onChangeText={onChangeSearch}
-        value={searchQuery}
-        onIconPress={() => navigation.push('ShowCountry', {
-          itemId: searchQuery })}
-      />
+        <Text h2 >SEARCH BY {"\n"}COUNTRY</Text>
+    <View style={styles.space2} />
+    <Searchbar
+      placeholder="Enter a country"
+      onChangeText={onChangeSearch}
+      value={searchQuery}
+      onIconPress={() => navigation.push('ShowCountry', {
+        itemId: searchQuery })}
+    />
     </View>
     </TouchableWithoutFeedback>
   );
 }
+
 //styles for render text and searchbar
 const styles = StyleSheet.create({
   space2: {

@@ -60,10 +60,10 @@ function ShowCountryScreen({ route, navigation }) {
     <FlatList
       renderItem={({ item, index }) => (
         <TouchableHighlight
-        activeOpacity={0.6}
-        underlayColor="#DDDDDD"
-        onPress={() => navigation.push('ShowPopulation', {itemId: item.toponymName})}
-        >
+          activeOpacity={0.6}
+          underlayColor="#DDDDDD"
+          onPress={() => navigation.push('ShowPopulation', {
+            itemId: item.toponymName})}>
         <View style={styles.item}>
           <Text style={styles.title}>{item.toponymName}</Text>
         </View>
@@ -73,9 +73,9 @@ function ShowCountryScreen({ route, navigation }) {
       ListEmptyComponent={emptyComponent}
       keyExtractor={(item, index) => index.toString()}
     />
-    </SafeAreaView>
-    );
-  }
+  </SafeAreaView>
+  );
+}
 //styles for render text and list
 const styles = StyleSheet.create({
   container: {

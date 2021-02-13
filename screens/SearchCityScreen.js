@@ -13,19 +13,19 @@ function SearchCityScreen({ navigation }) {
   const [searchQuery, setSearchQuery] = React.useState('');
   const onChangeSearch = query => setSearchQuery(query);
 
+  //show header, text and searchbar
   return (
-    //show header, text and searchbar
     <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss(); }} >
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text h2 >SEARCH BY {"\n"}CITY</Text>
-      <View style={styles.space2} />
-      <Searchbar
-        placeholder="Enter a city"
-        onChangeText={onChangeSearch}
-        value={searchQuery}
-        onIconPress={() => navigation.push('ShowPopulation', {
-          itemId: searchQuery })}
-      />
+    <View style={styles.space2} />
+    <Searchbar
+      placeholder="Enter a city"
+      onChangeText={onChangeSearch}
+      value={searchQuery}
+      onIconPress={() => navigation.push('ShowPopulation', {
+        itemId: searchQuery })}
+    />
     </View>
     </TouchableWithoutFeedback>
   );
