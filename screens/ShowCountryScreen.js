@@ -49,6 +49,9 @@ function ShowCountryScreen({ route, navigation }) {
     );
   };
 
+  //filter the json data
+  //if data doesn't contain the specified data from the user input-
+  // in "countryName" it is discarded
   function filterByID(item) {
     if (item.countryName == itemId) {
       return true
@@ -56,7 +59,6 @@ function ShowCountryScreen({ route, navigation }) {
   }
 
   let arrByID = data.filter(filterByID)
-
 
   //show: header, countries loading and error
   return (
