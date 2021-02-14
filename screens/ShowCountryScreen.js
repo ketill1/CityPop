@@ -24,11 +24,12 @@ function ShowCountryScreen({ route, navigation }) {
   //set previous user imput
   const { itemId, otherParam } = route.params;
 
+
   //get api data from specific country to show citis in falling order
   //uses: citie5000, fuzzy, orderBy, maxRows, username
   const myRequest = new Request(
     `http://api.geonames.org/searchJSON?q=${
-      itemId}&orderby=population&fuzzy=1&cities=cities5000&maxRows=10&username=weknowit`)
+      itemId}&orderby=population&cities=cities5000&maxRows=100&username=weknowit`)
 
   //fetch api and check for error
   React.useEffect(() => {
@@ -47,6 +48,15 @@ function ShowCountryScreen({ route, navigation }) {
       </View>
     );
   };
+
+  function filterByID(item) {
+    if (item.countryName == itemId) {
+      return true
+    }
+  }
+
+  let arrByID = data.filter(filterByID)
+
 
   //show: header, countries loading and error
   return (
@@ -69,7 +79,7 @@ function ShowCountryScreen({ route, navigation }) {
         </View>
         </TouchableHighlight>
       )}
-      data={data}
+      data={arrByID}
       ListEmptyComponent={emptyComponent}
       keyExtractor={(item, index) => index.toString()}
     />
