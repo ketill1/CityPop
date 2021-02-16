@@ -16,9 +16,10 @@ function SearchCityScreen({ navigation }) {
   //show header, text and searchbar
   return (
     <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss(); }} >
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: 'center'}}>
+      <View style={styles.space2} />
       <Text h2 >SEARCH BY {"\n"}CITY</Text>
-    <View style={styles.space2} />
+      <View style={styles.space2} />
     <Searchbar
       placeholder="Enter a city"
       onChangeText={onChangeSearch}
@@ -33,7 +34,7 @@ function SearchCityScreen({ navigation }) {
 //styles for render text and searchbar
 const styles = StyleSheet.create({
   space2: {
-    height: 100
+    height: 40
   }
 })
 

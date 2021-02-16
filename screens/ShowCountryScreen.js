@@ -40,13 +40,20 @@ function ShowCountryScreen({ route, navigation }) {
       .finally(() => setLoading(false));
   }, []);
 
-  //check for empty list from user input
-  const emptyComponent = () => {
-    return (
-      <View style={styles.item}>
-        <Text style={styles.title}>Can't find country!</Text>
-      </View>
-    );
+  //check for empty list from user input and return when isLoading is false
+    const emptyComponent = () => {
+      if (!isLoading) {
+      return (
+        <View style={styles.item}>
+          <Text style={styles.title}>Can't find country!</Text>
+        </View>
+      )
+    }
+    else {
+      return (
+        false
+      )
+    }
   };
 
   //filter the json data

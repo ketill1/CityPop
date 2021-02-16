@@ -37,14 +37,21 @@ function ShowCityPopulationScreen({ route, navigation }) {
       .finally(() => setLoading(false));
   }, []);
 
-  //check for empty list from user input
-  const emptyComponent = () => {
-    return (
-      <View style={styles.item}>
-        <Text style={styles.title}>Can't find city!</Text>
-      </View>
-    );
-  };
+  //check for empty list from user input and return when isLoading is false
+    const emptyComponent = () => {
+      if (!isLoading){
+        return (
+          <View style={styles.item}>
+            <Text style={styles.title}>Can't find city!</Text>
+          </View>
+        )
+      }
+      else {
+        return (
+          false
+        )
+      }
+    };
 
   //show: header, city, poulation-container, loading and error
   return (
