@@ -56,11 +56,20 @@ function ShowCountryScreen({ route, navigation }) {
     }
   };
 
+  // program to convert first letter of a string to uppercase and remove whitespace
+  function modifyUserInput(string) {
+    const toUpperCase = string.charAt(0).toUpperCase() + string.slice(1);
+    const removeWhiteSpace = toUpperCase.trim()
+    return removeWhiteSpace
+  }
+
+  const itemIdCapitalized = modifyUserInput(itemId);
+
   //filter the json data
   //if data doesn't contain the specified data from the user input-
   // in "countryName" it is discarded
   function filterByID(item) {
-    if (item.countryName == itemId) {
+    if (item.countryName == itemIdCapitalized) {
       return true
     }
   }
@@ -72,7 +81,7 @@ function ShowCountryScreen({ route, navigation }) {
     <SafeAreaView style={styles.container}>
     <View style={{alignItems: 'center'} }>
     <View style={styles.space2} />
-      <Text h2 >{itemId}</Text>
+      <Text h2 >{itemIdCapitalized}</Text>
     <View style={styles.space2} />
     </View>
     <ActivityIndicator size='large' animating={isLoading}/>
