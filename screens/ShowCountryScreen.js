@@ -58,9 +58,10 @@ function ShowCountryScreen({ route, navigation }) {
 
   // program to convert first letter of a string to uppercase and remove whitespace
   function modifyUserInput(string) {
-    const toUpperCase = string.charAt(0).toUpperCase() + string.slice(1);
-    const removeWhiteSpace = toUpperCase.trim()
-    return removeWhiteSpace
+    const removeWhiteSpace = string.trim()
+    const toUpperCase =  removeWhiteSpace .charAt(0).toUpperCase()
+    +  removeWhiteSpace .slice(1);
+    return toUpperCase
   }
 
   const itemIdCapitalized = modifyUserInput(itemId);
